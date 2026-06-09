@@ -1,0 +1,1 @@
+"""Pacote entities do jogo."""
