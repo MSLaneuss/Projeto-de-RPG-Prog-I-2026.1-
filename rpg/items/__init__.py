@@ -1,1 +1,0 @@
-"""Pacote items do jogo."""
