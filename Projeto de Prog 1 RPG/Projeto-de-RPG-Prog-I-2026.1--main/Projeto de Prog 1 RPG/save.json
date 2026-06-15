@@ -1,0 +1,45 @@
+{
+    "jogador": {
+        "lvl": 2,
+        "vida max": 24,
+        "vida atual": 24,
+        "força": 6,
+        "defesa base": 5,
+        "exp": 400,
+        "arma": {
+            "nome": "Espada Curta",
+            "ataque": 4
+        },
+        "armadura": {
+            "nome": "Cota de Malha",
+            "defesa": 6
+        },
+        "inventario": [
+            {
+                "nome": "Poção de Cura Grande",
+                "cura": 20
+            },
+            {
+                "nome": "Armadura de Couro",
+                "defesa": 2
+            },
+            {
+                "nome": "Poção de Cura Média",
+                "cura": 14
+            },
+            {
+                "nome": "Poção de Cura Gigante",
+                "cura": 40
+            },
+            {
+                "nome": "Poção de Cura Pequena",
+                "cura": 8
+            }
+        ]
+    },
+    "sala atual": 6,
+    "sala totais": 20,
+    "tesouro coletado": [
+        "Poção de Cura Gigante"
+    ]
+}

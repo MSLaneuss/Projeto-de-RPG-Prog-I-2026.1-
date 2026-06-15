@@ -1,0 +1,50 @@
+{
+    "dados de interação": {
+        "monstros": [
+            {"nome": "Zumbi", "vida": 16, "ataque": 6, "lvl": 0, "exp": 75},
+            {"nome": "Esqueleto", "vida": 13, "ataque": 8, "lvl": 0, "exp": 75},
+            {"nome": "Carniçal", "vida": 22, "ataque": 11, "lvl": 1, "exp": 200},
+            {"nome": "Gnoll", "vida": 22, "ataque": 9, "lvl": 1, "exp": 200},
+            {"nome": "Lobisomem", "vida": 58, "ataque": 18, "lvl": 2, "exp": 450},
+            {"nome": "Esqueleto de Minotauro", "vida": 64, "ataque": 20, "lvl": 2, "exp": 450},
+            {"nome": "Aranha Gigante", "vida": 32, "ataque": 23, "lvl": 3, "exp": 700},
+            {"nome": "Basilisco", "vida": 52, "ataque": 25, "lvl": 3, "exp": 700},
+            {"nome": "Demônio das Sombras", "vida": 66, "ataque": 30, "lvl": 4, "exp": 1000},
+            {"nome": "Banshee", "vida": 58, "ataque": 35, "lvl": 4, "exp": 1100},
+            {"nome": "Dragão Jovem", "vida": 133, "ataque": 50, "lvl": 5, "exp": 2300}
+        ],
+        "jogador": [
+            {"lvl": 1, "vida": 12, "força": 3, "defesa": 2, "exp necessario": 0},
+            {"lvl": 2, "vida": 24, "força": 6, "defesa": 5, "exp necessario": 300},
+            {"lvl": 3, "vida": 36, "força": 9, "defesa": 7, "exp necessario": 900},
+            {"lvl": 4, "vida": 48, "força": 12, "defesa": 10, "exp necessario": 2700},
+            {"lvl": 5, "vida": 60, "força": 16, "defesa": 12, "exp necessario": 6500},
+            {"lvl": 6, "vida": 72, "força": 20, "defesa": 15, "exp necessario": 10850}
+        ],
+        "armas": [
+            {"nome": "Espada Curta", "ataque": 4, "raridade": 1},
+            {"nome": "Espada Longa", "ataque": 6, "raridade": 2},
+            {"nome": "Espada Grande", "ataque": 8, "raridade": 4},
+            {"nome": "Espada Mágica Curta", "ataque": 10, "raridade": 8},
+            {"nome": "Espada Mágica Longa", "ataque": 12, "raridade": 10},
+            {"nome": "Espada Mágica Grande", "ataque": 14, "raridade": 12}
+        ],
+        "armaduras": [
+            {"nome": "Armadura de Couro", "defesa": 2, "raridade": 1},
+            {"nome": "Loriga de Escamas", "defesa": 4, "raridade": 1},
+            {"nome": "Cota de Malha", "defesa": 6, "raridade": 4},
+            {"nome": "Armadura de Tala", "defesa": 8, "raridade": 6},
+            {"nome": "Armadura de Placas", "defesa": 10, "raridade": 10}
+        ],
+        "poção": [
+            {"nome": "Poção de Cura Pequena", "cura": 8, "raridade": 3},
+            {"nome": "Poção de Cura Média", "cura": 14, "raridade": 5},
+            {"nome": "Poção de Cura Grande", "cura": 20, "raridade": 10}
+        ],
+        "tesouros": [
+            {"nome": "Exterminadora", "ataque": 20, "raridade": 15},
+            {"nome": "Guardiã", "defesa": 15, "raridade": 13},
+            {"nome": "Poção de Cura Gigante", "cura": 40, "raridade": 10}
+        ]
+    }
+}
