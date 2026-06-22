@@ -1,13 +1,26 @@
 import sys
 import os
-os.system(f"\"{sys.executable}\" -m pip install windows-curses")
-import curses
 import json
 import random
 import threading
 import platform
-import pygame
-
+# Verificação e instalação de dependências
+try:
+    import pygame
+except ImportError:
+    print("[Setup] Instalando Pygame, por favor aguarde...")
+    os.system(f'"{sys.executable}" -m pip install pygame')
+try:
+    if platform.system() == 'Windows':
+        import curses
+    else:
+        import curses 
+except ImportError:
+    if platform.system() == 'Windows':
+        print("[Setup] Instalando suporte a terminal para Windows...")
+        os.system(f'"{sys.executable}" -m pip install windows-curses')
+    else:
+        print("[Erro] Curses não encontrado no sistema operacional.")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from interface.ui import (UI, COR_DANO, COR_CURA, COR_TEXTO, COR_ITEM,
@@ -15,8 +28,7 @@ from interface.ui import (UI, COR_DANO, COR_CURA, COR_TEXTO, COR_ITEM,
 CAMINHO_BASE  = os.path.dirname(os.path.abspath(__file__))
 CAMINHO_SAVE  = os.path.join(CAMINHO_BASE, "save.json")
 CAMINHO_MUSICA = os.path.join(CAMINHO_BASE, "musica", "tema.ogg")
-# Música
-# Música
+# Áudio
 def iniciar_musica():
     print("\n[Som] Tentando iniciar a música...")
     try:
@@ -121,18 +133,37 @@ def rodar_combate(ui, estado, dados_monstro, dados):
         curses.noecho()
         curses.curs_set(0)
         if acao == "1":
-            dano_jogador = jogador["força"] + jogador["arma"]["ataque"]
+            # Cálculo de dano com variação aleatória e chance de crítico do jogador
+            dano_base = jogador["força"] + jogador["arma"]["ataque"]
+            variacao_maxima = int(dano_base * 0.25) 
+            variacao = random.randint(-variacao_maxima, variacao_maxima)
+            dano_jogador = dano_base + variacao
+            if random.random() <= 0.20:
+                dano_jogador = int(dano_jogador * 1.5)
+                adicionar_registro("💥 CRÍTICO!", COR_DESTAQUE)
+            dano_jogador = max(jogador["força"], dano_jogador)
             monstro["vida"] -= dano_jogador
             adicionar_registro(f"Você causou {dano_jogador} de dano em {monstro['nome']}!", COR_DANO)
+            # Checagem de Vitória do jogador
             if monstro["vida"] <= 0:
                 adicionar_registro(f"{monstro['nome']} foi derrotado!", COR_DESTAQUE)
                 ui.tela_combate(jogador, monstro, registro)
                 processar_vitoria(ui, jogador, monstro["exp"], dados)
                 return True
+            # Cálculo de dano do monstro com variação aleatória e chance de crítico
             defesa_total = jogador["defesa base"] + jogador["armadura"]["defesa"]
-            dano_monstro = max(1, monstro["ataque"] - defesa_total)
+            ataque_bruto = monstro["ataque"]
+            variacao_maxima = int(ataque_bruto * 0.25)
+            variacao = random.randint(-variacao_maxima, variacao_maxima)
+            ataque_final_monstro = ataque_bruto + variacao
+            if random.random() <= 0.10:
+                ataque_final_monstro = int(ataque_final_monstro * 1.5)
+                adicionar_registro(f"💥 CRÍTICO DO MONSTRO!", COR_VIDA)
+            dano_monstro = ataque_final_monstro - defesa_total
+            dano_monstro = max(1, dano_monstro)
             jogador["vida atual"] -= dano_monstro
             adicionar_registro(f"{monstro['nome']} te causou {dano_monstro} de dano!", COR_VIDA)
+
         elif acao == "2":
             pocoes_disponiveis = [i for i in jogador["inventario"] if "cura" in i]
             if not pocoes_disponiveis:
@@ -154,6 +185,7 @@ def rodar_combate(ui, estado, dados_monstro, dados):
         else:
             adicionar_registro("Ação inválida!", COR_INIMIGO)
     return jogador["vida atual"] > 0
+# Poções
 def tela_escolher_pocao(ui, pocoes):
     altura_tela  = ui.altura
     largura_tela = ui.largura
@@ -184,6 +216,7 @@ def tela_escolher_pocao(ui, pocoes):
         indice = int(escolha) - 1
         return pocoes[indice], indice
     return None
+# Vitória e Recompensas
 def processar_vitoria(ui, jogador, exp_ganho, dados):
     jogador["exp"] += exp_ganho
     mensagens = [f"Você ganhou {exp_ganho} EXP!"]
@@ -199,6 +232,7 @@ def processar_vitoria(ui, jogador, exp_ganho, dados):
                 mensagens.append(f"✦ NÍVEL {proximo_nivel} ALCANÇADO! ✦")
             break
     ui.tela_mensagem("VITÓRIA", mensagens, COR_EXP)
+# Itens
 def sortear_item(ui, estado, dados):
     jogador = estado["jogador"]
     sala_atual = estado["sala atual"]
@@ -309,6 +343,7 @@ def loop_menu(ui, dados):
                 ui.tela_mensagem("AVISO", ["Nenhum save encontrado."])
         elif opcao == "3":
             return None
+# Loop do jogo
 def loop_jogo(ui, estado, dados):
     while estado["sala atual"] <= estado["sala totais"]:
         ui.tela_sala(estado["sala atual"], estado["sala totais"], estado["jogador"])

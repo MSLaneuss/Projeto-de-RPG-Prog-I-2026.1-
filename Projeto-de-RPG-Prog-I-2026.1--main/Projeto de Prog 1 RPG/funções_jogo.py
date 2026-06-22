@@ -203,7 +203,7 @@ def inventario(estado_jogo):
             continue
         for i, item in enumerate(jogador["inventario"]):
             if "ataque" in item:
-                texto_item = f"{i + 1}. {item["nome"]} (Arma: +{item["ataque"]} Atk)"
+                texto_item = f"{i + 1}. {item["nome"]} 3(Arma: +{item["ataque"]} Atk)"
             elif "defesa" in item:
                 texto_item = f"{i + 1}. {item["nome"]} (Armadura: +{item["defesa"]} Def)"
             elif "cura" in item:

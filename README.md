@@ -7,9 +7,8 @@ Projeto de Programação I
 ```
 rpg_projeto/
 │
-├── main.py              # Versão original (terminal simples, sem cores)
 ├── funcoes_jogo.py      # Toda a lógica do jogo (combate, inventário, save...)
-├── dados.json           # Monstros, itens, armas, armaduras, poções
+├── dados.json           # Valores de monstros, itens, armas, armaduras, poções
 ├── main_ui.py           # ★ Versão com interface ASCII
 │
 └── interface/           # Módulo da interface TUI
@@ -31,6 +30,7 @@ python main_ui.py
 - Bordas góticas com caracteres Unicode (╔═╗║╚╝)
 - Barras de vida coloridas (verde → amarelo → vermelho conforme HP)
 - Tela de combate com painel duplo (herói vs inimigo) e log de batalha
+- Aviso de dano crítico do jogador e inimigo
 - Tela de inventário com status completo
 - Tela de menu com arte ASCII
 - Tela de game over/vitória

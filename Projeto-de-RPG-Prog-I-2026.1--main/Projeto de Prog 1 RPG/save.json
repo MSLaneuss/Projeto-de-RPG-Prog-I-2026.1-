@@ -1,1 +1,79 @@
-
+{
+    "jogador": {
+        "lvl": 6,
+        "vida max": 84,
+        "vida atual": 84,
+        "força": 20,
+        "defesa base": 15,
+        "exp": 10975,
+        "arma": {
+            "nome": "Exterminadora",
+            "ataque": 20,
+            "raridade": 15
+        },
+        "armadura": {
+            "nome": "Guardiã",
+            "defesa": 18,
+            "raridade": 13
+        },
+        "inventario": [
+            {
+                "nome": "Loriga de Escamas",
+                "defesa": 4,
+                "raridade": 1
+            },
+            {
+                "nome": "Espada Longa",
+                "ataque": 6,
+                "raridade": 2
+            },
+            {
+                "nome": "Cota de Malha",
+                "defesa": 6,
+                "raridade": 4
+            },
+            {
+                "nome": "Espada Grande",
+                "ataque": 8,
+                "raridade": 4
+            },
+            {
+                "nome": "Armadura de Tala",
+                "defesa": 8,
+                "raridade": 6
+            },
+            {
+                "nome": "Espada Mágica Curta",
+                "ataque": 10,
+                "raridade": 8
+            },
+            {
+                "nome": "Espada Mágica Longa",
+                "ataque": 12,
+                "raridade": 10
+            },
+            {
+                "nome": "Armadura de Couro",
+                "defesa": 2,
+                "raridade": 1
+            },
+            {
+                "nome": "Espada Curta",
+                "ataque": 4,
+                "raridade": 1
+            },
+            {
+                "nome": "Armadura de Placas",
+                "defesa": 12,
+                "raridade": 10
+            }
+        ]
+    },
+    "sala atual": 20,
+    "sala totais": 20,
+    "tesouro coletado": [
+        "Poção de Cura Gigante",
+        "Exterminadora",
+        "Guardiã"
+    ]
+}
