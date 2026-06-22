@@ -5,6 +5,7 @@ import curses
 import json
 import random
 import threading
+import platform
 import pygame
 
 
@@ -15,23 +16,25 @@ CAMINHO_BASE  = os.path.dirname(os.path.abspath(__file__))
 CAMINHO_SAVE  = os.path.join(CAMINHO_BASE, "save.json")
 CAMINHO_MUSICA = os.path.join(CAMINHO_BASE, "musica", "tema.ogg")
 # Música
+# Música
 def iniciar_musica():
     print("\n[Som] Tentando iniciar a música...")
     try:
-        # 1. Garante que o SDL converse com o servidor de som correto do Arch (PipeWire/PulseAudio)
-        os.environ['SDL_AUDIODRIVER'] = 'pulse'
+        current_os = platform.system()
+        if current_os == 'Linux':
+            os.environ['SDL_AUDIODRIVER'] = 'pulse'
+        elif current_os == 'Windows':
+            os.environ['SDL_AUDIODRIVER'] = 'wasapi'
         
-        # 2. Configura a amostragem antes de iniciar para evitar conflito com o terminal
         pygame.mixer.pre_init(44100, -16, 2, 2048)
         pygame.mixer.init()
         
-        # 3. Carrega e toca
         pygame.mixer.music.load(CAMINHO_MUSICA)
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(loops=-1)
         print("[Som] Sucesso! Música enviada para o servidor de áudio.")
+        
     except Exception as erro:
-        # Se falhar, isso aqui vai te dizer EXATAMENTE o motivo no terminal
         print(f"\n[ERRO DE ÁUDIO CRÍTICO]: {erro}\n")
 def parar_musica():
     try:
