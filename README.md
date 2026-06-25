@@ -1,4 +1,4 @@
-# RPG — Masmorra em Python
+# Masmorra (Projeto Programação 2026.1)
 
 Projeto de Programação I 
 
@@ -25,13 +25,3 @@ python main_ui.py
 > Requer terminal com suporte a cores (qualquer terminal moderno no Linux/Mac).
 > Tamanho mínimo recomendado: **80 colunas × 24 linhas**.
 
-## Funcionalidades da interface
-
-- Bordas góticas com caracteres Unicode (╔═╗║╚╝)
-- Barras de vida coloridas (verde → amarelo → vermelho conforme HP)
-- Tela de combate com painel duplo (herói vs inimigo) e log de batalha
-- Aviso de dano crítico do jogador e inimigo
-- Tela de inventário com status completo
-- Tela de menu com arte ASCII
-- Tela de game over/vitória
-- Efeito de flash para mensagens importantes
