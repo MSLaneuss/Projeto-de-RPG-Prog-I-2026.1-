@@ -1,9 +1,9 @@
 # Masmorra (Projeto Programação 2026.1)
 
 Contribuidores:
-> Arthur Luís Souza Gomes
-> Jonas Davi da Cruz Andrade
-> Mateus Cleiton Tenório dos Santos
+> Arthur Luís Souza Gomes,
+> Jonas Davi da Cruz Andrade,
+> Mateus Cleiton Tenório dos Santos.
 
 Projeto de Programação I 
 
